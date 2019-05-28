@@ -22,8 +22,10 @@ ENV JENKINS_UC http://jenkins-updates.cloudbees.com
 
 #install suggested and additional plugins
 USER root
+RUN mkdir -p /usr/share/jenkins/ref/plugins
+RUN chown -R jenkins /usr/share/jenkins/ref
+USER jenkins
 COPY plugins.txt plugins.txt
 COPY jenkins-support /usr/local/bin/jenkins-support
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 RUN /usr/local/bin/install-plugins.sh $(cat plugins.txt)
-USER jenkins
