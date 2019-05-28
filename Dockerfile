@@ -21,11 +21,7 @@ ENV CASC_JENKINS_CONFIG /usr/share/jenkins/config-as-code.yml
 ENV JENKINS_UC http://jenkins-updates.cloudbees.com
 
 #install suggested and additional plugins
-USER root
-RUN mkdir -p /usr/share/jenkins/ref/plugins
-RUN chown -R jenkins /usr/share/jenkins/ref
-COPY plugins.txt plugins.txt
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 COPY jenkins-support /usr/local/bin/jenkins-support
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
-RUN /usr/local/bin/install-plugins.sh $(cat plugins.txt)
-USER jenkins
+RUN bash /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
