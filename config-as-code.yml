@@ -1,0 +1,14 @@
+jenkins:
+  agentProtocols:
+  - "Diagnostic-Ping"
+  - "JNLP4-connect"
+  - "OperationsCenter2"
+  - "Ping"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  markupFormatter:
+    rawHtml:
+      disableSyntaxHighlighting: true
+  numExecutors: 0
